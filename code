@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.Scanner;
+
+
+public class File_program {
+
+    public static void main(String[]args) throws IOException {
+        try {
+            int count = 0;
+            String s = " ";
+            String a[];
+            File f = new File("file.txt");
+            FileReader r = new FileReader(f);
+            BufferedReader b = new BufferedReader(r);
+            Scanner sc = new Scanner(System.in);
+            System.out.println("enter the word to be searched");
+            String word = sc.nextLine();
+            while ((s = b.readLine()) != null) {
+                a = s.split("");
+                for (String c : a) {
+                    if (c.equals(word)) {
+                        count++;
+
+                    }
+                }
+            }
+            if (count == 0) {
+                System.out.println("word is not found");
+
+            } else {
+                word = word.replace("", "#");
+                System.out.println("count = " + count);
+                System.out.println("replaced word = " + word);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
+    }
+}
